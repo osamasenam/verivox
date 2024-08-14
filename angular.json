@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "verivox:build:production"
+              "buildTarget": "verivox:build:production"
             },
             "development": {
-              "browserTarget": "verivox:build:development"
+              "buildTarget": "verivox:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "verivox:build"
+            "buildTarget": "verivox:build"
           }
         },
         "test": {
