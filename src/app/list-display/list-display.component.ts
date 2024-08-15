@@ -1,50 +1,32 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Tariff } from './Tariff-interface';
+import { DataService } from '../data.service';
 
 
 @Component({
   selector: 'app-list-display',
-  standalone: false,
   templateUrl: './list-display.component.html',
-  styleUrl: './list-display.component.scss'
+  styleUrl: './list-display.component.scss',
+  providers: [DataService]
 })
-export class ListDisplayComponent {
+export class ListDisplayComponent implements OnInit {
   
-  data: Tariff[] = [ {
-    "id": 1,
-    "name": "Tariff A",
-    "price": 3.5,
-    "supplier": "Company A",
-    "description": "Description of Tariff A Description of Tariff A Description of Tariff A"
-  }, {
-    "id": 2,
-    "name": "Tariff B",
-    "price": 4.0,
-    "supplier": "Company B",
-    "description": "Description of Tariff B"
-  }, {
-    "id": 3,
-    "name": "Tariff C",
-    "price": 3.8,
-    "supplier": "Company C",
-    "description": "Description of Tariff C"
-  },{
-    "id": 1,
-    "name": "Tariff A",
-    "price": 3.5,
-    "supplier": "Company A",
-    "description": "Description of Tariff A"
-  }, {
-    "id": 2,
-    "name": "Tariff B",
-    "price": 4.0,
-    "supplier": "Company B",
-    "description": "Description of Tariff B"
-  }, {
-    "id": 3,
-    "name": "Tariff C",
-    "price": 3.8,
-    "supplier": "Company C",
-    "description": "Description of Tariff C"
-  }]
+  data: Tariff[] = [];
+  
+  constructor(
+    private dataService: DataService,
+    private changeDetector: ChangeDetectorRef
+    ) { }
+  ngOnInit(): void {
+    this.data = this.dataService.getData();
+  }
+
+  onClickAsc() {
+    this.data.sort((a,b) => a.price - b.price);
+  }
+
+  onClickDsc() {
+    this.data.sort((a,b) => b.price - a.price);
+  }  
+  
 }

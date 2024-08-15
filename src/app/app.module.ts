@@ -8,7 +8,8 @@ import { ListDisplayComponent } from "./list-display/list-display.component";
 @NgModule({
   declarations: [
     AppComponent,
-    ListDisplayComponent
+    ListDisplayComponent,
+    
   ],
   imports: [
     BrowserModule,
