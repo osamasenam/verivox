@@ -1,0 +1,21 @@
+import { EventEmitter, Injectable } from "@angular/core";
+import { Tariff } from "./list-display/Tariff-interface";
+
+export class CompareDataService {
+
+private compareData: Tariff[] = [];
+compareDataChanged = new EventEmitter<Tariff[]>();
+
+getCompareData () {
+    return this.compareData;
+  }
+
+putCompareData (data: any) {
+    this.compareData = data;
+    console.log("new compare: ", this.compareData);
+    
+    this.compareDataChanged.emit(this.compareData);
+}
+
+
+}

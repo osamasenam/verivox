@@ -3,5 +3,6 @@ export interface Tariff {
     "name": string,
     "price": number,
     "supplier": string,
-    "description": string
+    "description": string,
+    "checked": boolean
 }

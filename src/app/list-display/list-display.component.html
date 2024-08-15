@@ -21,6 +21,7 @@
             <th>price</th>
             <th>supplier</th>
             <th>description</th>
+            <th>compare</th>
         </tr>
     </thead>
     
@@ -31,6 +32,17 @@
             <td data-label="price">{{item.price}}</td>
             <td data-label="supplier">{{item.supplier}}</td>
             <td data-label="description">{{item.description}}</td>
+            <td data-label="compare">
+                <input type="checkbox" (change)="onCheck($event)" [(ngModel)]="item.checked">
+            </td>
         </tr>
     </tbody>
 </table>
+
+<footer>
+    <h3>Compare Tariffs</h3>
+    
+    <button (click)="onClickCompare()">
+        Compare
+    </button>
+</footer>

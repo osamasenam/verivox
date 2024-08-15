@@ -1,0 +1,36 @@
+<nav>
+    <button (click)="onClickBack()">
+        Back
+    </button>
+</nav>
+
+<table>
+    <caption>
+        Tariffs Compare
+      </caption>
+    <thead>
+        <tr>
+            <td>name</td>
+            <th *ngFor="let item of data">{{item.name}}</th>     
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td *ngFor="let item of data" data-label="id">{{item.id}}</td>
+        </tr>
+        <tr>
+            <td>price</td>
+            <td *ngFor="let item of data" data-label="price">{{item.price}}</td>
+        </tr>
+        <tr>
+            <td>supplier</td>
+            <td *ngFor="let item of data" data-label="supplier">{{item.supplier}}</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td *ngFor="let item of data" data-label="description">{{item.description}}</td>
+        </tr>
+    </tbody>
+</table>
