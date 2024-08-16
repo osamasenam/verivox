@@ -1,11 +1,11 @@
 <nav>
     <h3>Sort by price</h3>
     
-    <button (click)="onClickAsc()">
+    <button id="button_asc" (click)="onClickAsc()">
         Ascending
     </button>
     
-    <button (click)="onClickDsc()">
+    <button id="button_dsc" (click)="onClickDsc()">
         Descending
     </button>
 </nav>
@@ -33,7 +33,7 @@
             <td data-label="supplier">{{item.supplier}}</td>
             <td data-label="description">{{item.description}}</td>
             <td data-label="compare">
-                <input type="checkbox" (change)="onCheck($event)" [(ngModel)]="item.checked">
+                <input id="checkbox_{{item.id}}" type="checkbox" (change)="onCheck($event)" [(ngModel)]="item.checked">
             </td>
         </tr>
     </tbody>
@@ -42,7 +42,7 @@
 <footer>
     <h3>Compare Tariffs</h3>
     
-    <button (click)="onClickCompare()">
+    <button id="button_compare" (click)="onClickCompare()">
         Compare
     </button>
 </footer>
