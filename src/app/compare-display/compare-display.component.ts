@@ -25,8 +25,6 @@ export class CompareDisplayComponent implements OnInit {
       this.compareDataService.compareDataChanged
       .subscribe(
         (data: any) => {
-          console.log("subscribe: ", this.data);
-          
           this.data = data;
         }
       );

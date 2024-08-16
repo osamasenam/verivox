@@ -1,8 +1,9 @@
+import { Observable } from "rxjs";
 import { Tariff } from "./list-display/Tariff-interface";
 
 export class DataService {
 
-data: Tariff[] = [ {
+dataOrg: Tariff[] = [ {
     "id": 1,
     "name": "Tariff A",
     "price": 3.5,
@@ -46,8 +47,13 @@ data: Tariff[] = [ {
       checked: false
   }];
 
-getData () {
-    return this.data;
+getData () : Observable<Tariff[]>{
+    console.log("service data", this.dataOrg);
+    
+    return new Observable(observer => {
+        observer.next(this.dataOrg.slice());
+        observer.complete();
+    });
   }
 
 

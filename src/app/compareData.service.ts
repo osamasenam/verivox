@@ -11,9 +11,7 @@ getCompareData () {
   }
 
 putCompareData (data: any) {
-    this.compareData = data;
-    console.log("new compare: ", this.compareData);
-    
+    this.compareData = data;    
     this.compareDataChanged.emit(this.compareData);
 }
 

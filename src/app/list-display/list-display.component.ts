@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class ListDisplayComponent implements OnInit {
   
   data: Tariff[] = [];
-  checkedItems: number = 0;
+  checkedItems: number;
 
   constructor(
     private router: Router,
@@ -20,7 +20,13 @@ export class ListDisplayComponent implements OnInit {
     private compareDataService: CompareDataService
     ) { }
   ngOnInit(): void {
-    this.data = this.dataService.getData();
+    this.dataService.getData()
+      .subscribe(
+        (data: any) => {
+          this.data = data;
+        }
+      );
+    this.countCheckedItems();
   }
 
   onClickAsc() {
@@ -32,20 +38,23 @@ export class ListDisplayComponent implements OnInit {
   }  
   
   onCheck(e: any) {
-    //count how many checked items
-    this.checkedItems = this.data.filter(item => item.checked === true).length;
+    this.countCheckedItems();
+  }
 
+  countCheckedItems() {
+    this.checkedItems = this.data.filter(item => item.checked === true).length;
   }
 
   onClickCompare() {
     if(this.checkedItems > 3) {
       //show error message
       alert("Maximum 3 Tariffs to compare");
-    } else {
+    } else if(this.checkedItems > 1){
       //navigate to the comparison page
       this.compareDataService.putCompareData(this.data.filter(item => item.checked === true));
       this.router.navigate(['compare']);
-      
+    } else {
+      alert("Choose more than 1 Tariff to compare");
     }
   }
 }
