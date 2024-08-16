@@ -5,19 +5,19 @@ import { CompareDataService } from 'src/app/compareData.service';
 import { DataService } from 'src/app/data.service';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CompareDisplayComponent', () => {
   let component: CompareDisplayComponent;
   let fixture: ComponentFixture<CompareDisplayComponent>;
 
-  let router: Router;
-  let location: Location;
+  let mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CompareDisplayComponent],
-      providers: [DataService, CompareDataService],
+      providers: [DataService, CompareDataService, { provide: Router, useValue: mockRouter }],
       imports: [FormsModule, RouterModule]
     })
     .compileComponents();
@@ -39,7 +39,11 @@ describe('CompareDisplayComponent', () => {
     
   });
 
-
+  it('should navigate to main', () => {
+    fixture.detectChanges();
+    component.onClickBack();
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['']);
+  });
 
 
 });

@@ -8,11 +8,13 @@ import { Router } from '@angular/router';
 describe('ListDisplayComponent', () => {
   let component: ListDisplayComponent;
   let fixture: ComponentFixture<ListDisplayComponent>;
-
+  let mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ListDisplayComponent],
-      providers: [DataService, CompareDataService]
+      providers: [DataService, CompareDataService, { provide: Router, useValue: mockRouter }]
     })
     .compileComponents();
 
@@ -168,7 +170,12 @@ describe('ListDisplayComponent', () => {
   }));
 
   
-
+  it('should navigate to compare', () => {
+    component.checkedItems = 2;
+    fixture.detectChanges();
+    component.onClickCompare();
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['compare']);
+  });
 
 
 
