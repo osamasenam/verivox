@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Tariff } from './Tariff-interface';
-import { DataService } from '../data.service';
-import { CompareDataService } from '../compareData.service';
+import { DataService } from '../../data.service';
+import { CompareDataService } from '../../compareData.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-display',
   templateUrl: './list-display.component.html',
   styleUrl: './list-display.component.scss',
+  providers: [DataService]
 })
 export class ListDisplayComponent implements OnInit {
   

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tariff } from '../list-display/Tariff-interface';
-import { CompareDataService } from '../compareData.service';
+import { CompareDataService } from '../../compareData.service';
 import { Router } from '@angular/router';
 
 @Component({

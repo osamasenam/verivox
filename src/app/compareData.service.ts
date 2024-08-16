@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from "@angular/core";
-import { Tariff } from "./list-display/Tariff-interface";
+import { Tariff } from "./container/list-display/Tariff-interface";
 
 export class CompareDataService {
 

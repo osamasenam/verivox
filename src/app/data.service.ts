@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { Tariff } from "./list-display/Tariff-interface";
+import { Tariff } from "./container/list-display/Tariff-interface";
 
 export class DataService {
 
@@ -47,9 +47,7 @@ dataOrg: Tariff[] = [ {
       checked: false
   }];
 
-getData () : Observable<Tariff[]>{
-    console.log("service data", this.dataOrg);
-    
+getData () : Observable<Tariff[]>{    
     return new Observable(observer => {
         observer.next(this.dataOrg.slice());
         observer.complete();

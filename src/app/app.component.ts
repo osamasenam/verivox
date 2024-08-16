@@ -6,7 +6,6 @@ import { CompareDataService } from './compareData.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [DataService, CompareDataService]
 })
 export class AppComponent {
   title = 'verivox';
